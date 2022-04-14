@@ -1,0 +1,19 @@
+<h1>レストランを検索</h1>
+<%= form_with url: "/search", method: "POST", local: true do |f| %>
+  <%= f.radio_button :distance, :"500" %>
+  <%= f.label :distance, "500m", value: 500 %>
+
+  <%= f.radio_button :distance, :"1000" %>
+  <%= f.label :distance, "1km", value: 1000 %>
+
+  <%= f.radio_button :distance, :"2000" %>
+  <%= f.label :distance, "2km", value: 2000 %>
+
+  <%= f.radio_button :distance, :"3000" %>
+  <%= f.label :distance, "3km", value: 3000 %>
+
+  <%= f.radio_button :distance, :"5000" %>
+  <%= f.label :distance, "5km", value: 5000 %>
+
+  <%= f.submit "現在地から探す", {style: :"display: block;"}  %>
+<% end %>

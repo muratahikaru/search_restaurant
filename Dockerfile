@@ -6,8 +6,9 @@ ENV RAILS_ENV=production
 # yarnパッケージ管理ツールをインストール
 RUN curl -sS https://dl.yarnpkg.com/debian/pubkey.gpg | apt-key add - && \
 echo "deb https://dl.yarnpkg.com/debian/ stable main" | tee /etc/apt/sources.list.d/yarn.list
-
-RUN apt-get update -qq && apt-get install -y nodejs build-essential libpq-dev postgresql-client yarn
+RUN curl -sL https://deb.nodesource.com/setup_12.x | bash - \
+        && apt-get install -y nodejs
+RUN apt-get update -qq && apt-get install -y  build-essential libpq-dev postgresql-client yarn
 WORKDIR /search_restaurant
 COPY Gemfile /search_restaurant/Gemfile
 COPY Gemfile.lock /search_restaurant/Gemfile.lock
