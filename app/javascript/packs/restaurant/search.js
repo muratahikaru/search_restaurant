@@ -11,10 +11,10 @@ if('geolocation' in navigator) {
 document.addEventListener("DOMContentLoaded", function(){
     document.forms['search_form'].addEventListener('submit', function(e) {
         e.preventDefault();
-        searchRequest(this.elements['arrange'].value, latitude, longitude)
+        searchRequest(this.elements['range'].value, latitude, longitude)
     })
 })
 
-const searchRequest = (arrange, latitude, longitude) => {
-    location.href = '/restaurants?arrange=' + arrange + "&latitude=" + latitude + "&longitude=" + longitude;
+const searchRequest = (range, latitude, longitude) => {
+    location.href = '/restaurants?range=' + range + "&latitude=" + latitude + "&longitude=" + longitude;
 }

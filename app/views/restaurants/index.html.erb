@@ -1,1 +1,12 @@
-<h1>一覧だべ</h1>
+<h1>検索結果</h1>
+<ul>
+  <% @restaurants.each do |restaurant| %>
+    <%= link_to "/restaurant?id=#{restaurant["id"]}" do %>
+      <li>
+        <p><img src="<%= restaurant["photo"]["pc"]["l"] %>" alt="サムネイル"></p>
+        <p><%= restaurant["name"] %></p>
+        <p><%= restaurant["access"] %></p>
+      </li>
+    <% end %>
+  <% end %>
+</ul>
