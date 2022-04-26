@@ -3,4 +3,5 @@ Rails.application.routes.draw do
   root "restaurants#search"
   get "/restaurants" => "restaurants#index"
   get "/restaurant" => "restaurants#show"
+  get "/restaurant/not_exist" => "restaurants#error"
 end

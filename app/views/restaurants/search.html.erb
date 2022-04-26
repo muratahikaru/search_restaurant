@@ -1,21 +1,23 @@
-<h1>レストランを検索</h1>
-<form name="search_form">
-  <input type="radio" name="range" value="1" id="1" >
-  <label for="1">300m</label>
+<div class="container text-center">
+  <h1>レストランを検索</h1>
+  <form name="search_form">
+    <p>検索したい半径を選択してください</p>
+    <input type="radio" name="range" value="1" id="1" checked >
+    <label for="1">300m</label>
 
-  <input type="radio" name="range" value="2" id="2" >
-  <label for="2">500m</label>
+    <input type="radio" name="range" value="2" id="2" >
+    <label for="2">500m</label>
 
-  <input type="radio" name="range" value="3" id="3" >
-  <label for="3">1km</label>
+    <input type="radio" name="range" value="3" id="3" >
+    <label for="3">1km</label>
 
-  <input type="radio" name="range" value="4" id="4" >
-  <label for="4">2km</label>
+    <input type="radio" name="range" value="4" id="4" >
+    <label for="4">2km</label>
 
-  <input type="radio" name="range" value="5" id="5" >
-  <label for="5">3km</label>
+    <input type="radio" name="range" value="5" id="5" >
+    <label for="5">3km</label>
 
-  <input type="submit" value="現在地から探す" style="display: block">
-</form>
-
+    <input type="submit" value="現在地から探す" class="d-block center btn btn-primary">
+  </form>
+</div>
 <%= javascript_pack_tag 'restaurant/search.js' %>

@@ -26,6 +26,10 @@ class RestaurantsController < ApplicationController
       @restaurants = hash["results"]["shop"]
     end
 
+    if @restaurants.nil?
+      redirect_to("/restaurant/not_exist")
+    end
+
   end
 
   def show
@@ -48,4 +52,8 @@ class RestaurantsController < ApplicationController
     end
 
   end
+
+  def error
+  end
+
 end
