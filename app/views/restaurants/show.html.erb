@@ -1,1 +1,7 @@
-<h1>詳細だお</h1>
+<h1>詳細</h1>
+<ul>
+  <li><%= @restaurant["name"] %></li>
+  <li><%= @restaurant["address"] %></li>
+  <li><%= @restaurant["open"] %></li>
+  <li><img src="<%= @restaurant["photo"]["pc"]["l"] %>" alt="サムネイル"></li>
+</ul>
