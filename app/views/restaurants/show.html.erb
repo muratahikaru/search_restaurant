@@ -1,3 +1,6 @@
+<div class="text-left m-t-1">
+  <%= link_to "検索", root_path %> / <%= link_to "結果一覧", :back %> / <%= @restaurant["name"] %>
+</div>
 <ul class="list-group-item m-t-1 text-left">
   <li class="restaurant-name m-b-1"><%= @restaurant["name"] %></li>
   <li class="m-b-1"><span class="w-bold">営業時間</span>：<%= @restaurant["open"] %></li>

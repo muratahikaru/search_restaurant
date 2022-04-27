@@ -1,5 +1,10 @@
 class RestaurantsController < ApplicationController
   require 'rexml/document'
+  before_action :clear_cache, only: [:search, :error]
+
+  def clear_cache
+    Rails.cache.delete('restaurants')
+  end
 
   def search
   end
@@ -13,16 +18,19 @@ class RestaurantsController < ApplicationController
     current_page = params[:page] || 1
     params = URI.encode_www_form({ key: key, lat: latitude, lng: longitude, range: range, count: number_of_output})
 
-    uri = URI.parse("http://webservice.recruit.co.jp/hotpepper/gourmet/v1/?#{params}")
-    response = Net::HTTP.start(uri.host, uri.port) do |http|
-      http.get(uri.request_uri)
-    end
+    if Rails.cache.exist?('restaurants')
+      @restaurants = Kaminari.paginate_array(Rails.cache.read('restaurants')).page(current_page).per(10)
+    else
+      uri = URI.parse("http://webservice.recruit.co.jp/hotpepper/gourmet/v1/?#{params}")
+      response = Net::HTTP.start(uri.host, uri.port) do |http|
+        http.get(uri.request_uri)
+      end
 
-    case response
-    when Net::HTTPSuccess
       xml = REXML::Document.new(response.body)
 
       hash = Hash.from_xml(xml.elements['results'].to_s)
+
+      Rails.cache.write('restaurants', hash["results"]["shop"])
 
       if hash["results"]["shop"].nil?
         redirect_to("/restaurant/not_exist")
