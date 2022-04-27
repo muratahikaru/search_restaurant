@@ -1,12 +1,16 @@
 <h1>検索結果</h1>
-<ul>
+<ul class="list-group list-group-flush">
   <% @restaurants.each do |restaurant| %>
-    <%= link_to "/restaurant?id=#{restaurant["id"]}" do %>
-      <li>
-        <p><img src="<%= restaurant["photo"]["pc"]["l"] %>" alt="サムネイル"></p>
-        <p><%= restaurant["name"] %></p>
-        <p><%= restaurant["access"] %></p>
-      </li>
-    <% end %>
+    <li class="list-group-item m-b-1 flex">
+      <div class="with-30">
+        <p><img src="<%= restaurant["photo"]["pc"]["l"] %>" class="image-fit" alt="サムネイル"></p>
+      </div>
+      <div class="text-left m-l-1 with-70">
+        <%= link_to "/restaurant?id=#{restaurant["id"]}" do %>
+          <h2><%= restaurant["name"] %></h2>
+        <% end %>
+        <p>アクセス: <%= restaurant["access"] %></p>
+      </div>
+    </li>
   <% end %>
 </ul>
