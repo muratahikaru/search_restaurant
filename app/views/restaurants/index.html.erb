@@ -1,5 +1,5 @@
-<div class="text-left m-t-1">
-  <%= link_to "検索", root_path %>/結果一覧
+<div class="text-left m-t-1 f-s-middle">
+  <%= link_to "検索", root_path %> > 結果一覧
 </div>
 <h1>検索結果</h1>
 <ul class="list-group list-group-flush">
@@ -17,7 +17,7 @@
     </li>
   <% end %>
   <%= paginate @restaurants %>
-  <div class="text-left m-t-1 m-b-1">
+  <div class="text-left m-t-1 m-b-1 f-s-middle">
     <%= link_to "<<検索に戻る", root_path %>
   </div>
 </ul>
