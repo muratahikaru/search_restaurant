@@ -9,6 +9,7 @@ import * as ActiveStorage from "@rails/activestorage"
 import "channels"
 require('jquery')
 require('restaurant/search')
+require('restaurant/map')
 
 Rails.start()
 Turbolinks.start()

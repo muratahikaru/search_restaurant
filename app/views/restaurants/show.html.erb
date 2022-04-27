@@ -1,7 +1,13 @@
-<h1>詳細</h1>
-<ul>
-  <li><%= @restaurant["name"] %></li>
-  <li><%= @restaurant["address"] %></li>
-  <li><%= @restaurant["open"] %></li>
-  <li><img src="<%= @restaurant["photo"]["pc"]["l"] %>" alt="サムネイル"></li>
+<ul class="list-group-item m-t-1 text-left">
+  <li class="restaurant-name m-b-1"><%= @restaurant["name"] %></li>
+  <li class="m-b-1"><span class="w-bold">営業時間</span>：<%= @restaurant["open"] %></li>
+  <li class="m-b-1"><img src="<%= @restaurant["photo"]["pc"]["l"] %>" alt="サムネイル"></li>
+  <li class="m-b-1"><span class="w-bold">住所</span>：<%= @restaurant["address"] %></li>
+  <div id='map'>
+  </div>
 </ul>
+<div id="lat" data-lat="<%= @restaurant["lat"] %>"></div>
+<div id="lng" data-lng="<%= @restaurant["lng"] %>"></div>
+
+<script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyAkDu5uGDCoiKe8idrfcUu3Fk6jYgx9Brk&callback=initMap" async defer></script>
+<%= javascript_pack_tag 'restaurant/map.js' %>
