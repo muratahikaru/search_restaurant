@@ -9,8 +9,9 @@ class RestaurantsController < ApplicationController
     range = params[:range]
     latitude = params[:latitude]
     longitude = params[:longitude]
-
-    params = URI.encode_www_form({ key: key, lat: latitude, lng: longitude, range: range})
+    number_of_output = 100
+    current_page = params[:page] || 1
+    params = URI.encode_www_form({ key: key, lat: latitude, lng: longitude, range: range, count: number_of_output})
 
     uri = URI.parse("http://webservice.recruit.co.jp/hotpepper/gourmet/v1/?#{params}")
     response = Net::HTTP.start(uri.host, uri.port) do |http|
@@ -23,13 +24,12 @@ class RestaurantsController < ApplicationController
 
       hash = Hash.from_xml(xml.elements['results'].to_s)
 
-      @restaurants = hash["results"]["shop"]
+      if hash["results"]["shop"].nil?
+        redirect_to("/restaurant/not_exist")
+      else
+        @restaurants = Kaminari.paginate_array(hash["results"]["shop"]).page(current_page).per(10)
+      end
     end
-
-    if @restaurants.nil?
-      redirect_to("/restaurant/not_exist")
-    end
-
   end
 
   def show

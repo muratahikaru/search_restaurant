@@ -8,6 +8,7 @@ gem 'rails', '~> 6.1.4'
 
 gem 'bootstrap-sass', '3.4.1'
 
+gem 'kaminari'
 # Use postgresql as the database for Active Record
 gem 'pg', '~> 1.1'
 # Use Puma as the app server

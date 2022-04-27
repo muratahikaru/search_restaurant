@@ -7,10 +7,11 @@
       </div>
       <div class="text-left m-l-1 with-70">
         <%= link_to "/restaurant?id=#{restaurant["id"]}" do %>
-          <h2><%= restaurant["name"] %></h2>
+          <p class="restaurant-name"><%= restaurant["name"] %></p>
         <% end %>
         <p>アクセス: <%= restaurant["access"] %></p>
       </div>
     </li>
   <% end %>
+  <%= paginate @restaurants %>
 </ul>
