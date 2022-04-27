@@ -14,6 +14,6 @@ function initMap(){
     });
 }
 
-$(document).load(function() {
+$(document).ready(function() {
     initMap();
 });
