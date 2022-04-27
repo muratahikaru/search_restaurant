@@ -9,5 +9,5 @@
 <div id="lat" data-lat="<%= @restaurant["lat"] %>"></div>
 <div id="lng" data-lng="<%= @restaurant["lng"] %>"></div>
 
-<script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyAkDu5uGDCoiKe8idrfcUu3Fk6jYgx9Brk&callback=initMap" async defer></script>
+<script src="https://maps.googleapis.com/maps/api/js?key=<%= ENV['GOOGLE_MAP_API_KEY'] %>&callback=initMap" async defer></script>
 <%= javascript_pack_tag 'restaurant/map.js' %>
